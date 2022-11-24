@@ -1,0 +1,53 @@
+#!/bin/bash
+
+## https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.gz
+## https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.gz
+BINUTILS_VERSION=2.39
+GCC_VERSION=12.2.0
+PREFIX=$HOME/opt/cross
+TARGET=i686-elf
+
+cd /etc
+
+
+## Test if local host is Arch based.
+if [ -d /etc/pacman.d ]
+then
+    ## Run the Arch version of the install command.
+    sudo pacman -S base-devel gmp libmpc mpfr -y
+fi
+
+## Test if local host is Debian based.
+if [ -d /etc/apt ]
+then
+    ## Run the Debian version of the install command.
+    sudo apt-get install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo libisl-dev -y
+
+fi
+cd ~
+wget https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz
+wget https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz
+
+tar xfv binutils-$BINUTILS_VERSION.tar.gz
+tar xfv gcc-$GCC_VERSION.tar.gz
+
+mkdir -p build-binutils
+mkdir -p build-gcc
+
+cd build-binutils
+../binutils-$BINUTILS_VERSION/configure --target=$TARGET --prefix="$PREFIX" --with-sysroot --disable-nls --disable-werror
+make
+make install
+cd ..
+
+cd build-gcc
+../gcc-$GCC_VERSION/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c,c++ --without-headers
+make all-gcc
+make all-target-libgcc
+make install-gcc
+make install-target-libgcc
+
+cd ..
+echo "Make sure you put $PREFIX in your PATH"
+
+
