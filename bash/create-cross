@@ -2,8 +2,8 @@
 
 ## https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.gz
 ## https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.gz
-BINUTILS_VERSION=2.39
-GCC_VERSION=12.2.0
+BINUTILS_VERSION=2.40
+GCC_VERSION=13.1.0
 PREFIX=$HOME/opt/cross
 TARGET=i686-elf
 
