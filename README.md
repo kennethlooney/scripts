@@ -1,4 +1,4 @@
-# Some Usefull Scripts
+# Some Usefull Automated Scripts
 After downloading or cloning this repository. You will need to add it to your system's PATH variable.
 
 ## Scripts
@@ -7,7 +7,7 @@ After downloading or cloning this repository. You will need to add it to your sy
 ### For Operating System Development
 | Script | Lnguage | Description |
 |--------|---------|-------------|
-| *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles for *i686*.
+| *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles for *i686/x86_64,etc.* You just need to change the target in the script.
 
 ### For Package Management
 | Script | Lnguage | Description |
