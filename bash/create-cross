@@ -49,6 +49,7 @@ make install-target-libgcc
 
 cd ..
 echo "Make sure you put $PREFIX in your PATH"
-rm -rd binutils-$BINUTILS_VERSION gcc-$GCC_VERSION binutils-$BINUTILS_VERSION.tar.gz gcc-$GCC_VERSION.tar.gz build-binutils build-gcc
+# DONT KNOW WHY sudo is required!
+sudo rm -rd binutils-$BINUTILS_VERSION gcc-$GCC_VERSION binutils-$BINUTILS_VERSION.tar.gz gcc-$GCC_VERSION.tar.gz build-binutils build-gcc
 
 
