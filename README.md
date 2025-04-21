@@ -1,13 +1,10 @@
-# Some Usefull Automated Scripts
-After downloading or cloning this repository. You will no longer need to add the toolchain to your system's PATH since */usr/local/bin* is already added.
-
 ## Scripts
 
 
 ### For Operating System Development
 | Script | Lnguage | Description |
 |--------|---------|-------------|
-| *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles for *i686/x86_64,etc.* You just need to change the target in the script.
+| *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles currently for *i686 or x86_64* You will be prompt with some options.
 
 ### For Package Management
 | Script | Lnguage | Description |
