@@ -4,8 +4,30 @@
 ## https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.gz
 BINUTILS_VERSION=2.44
 GCC_VERSION=14.2.0
-PREFIX=/usr/local
-TARGET=x86_64-elf
+ 
+
+# Prompt the user user for the location of the cross compiler.
+echo "Enter the location of the cross compiler (default: $HOME/opt/cross):"
+read -r CROSS_COMPILER_LOCATION
+if [ -z "$CROSS_COMPILER_LOCATION" ]; then
+    CROSS_COMPILER_LOCATION="$HOME/opt/cross"
+fi
+echo "Cross compiler location: $CROSS_COMPILER_LOCATION"
+mkdir -p $CROSS_COMPILER_LOCATION
+cd $CROSS_COMPILER_LOCATION
+echo "Creating cross compiler in $CROSS_COMPILER_LOCATION"
+PREFIX=$CROSS_COMPILER_LOCATION
+
+
+# Prompt the user for the target architecture.
+echo "Enter the target architecture (default: x86_64-elf):"
+read -r TARGET_ARCH
+if [ -z "$TARGET_ARCH" ]; then
+    TARGET_ARCH="x86_64-elf"
+fi
+echo "Target architecture: $TARGET_ARCH"
+TARGET=$TARGET_ARCH
+echo "Creating cross compiler for $TARGET"
 
 cd /etc
 
