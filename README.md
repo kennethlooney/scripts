@@ -1,5 +1,5 @@
 # Some Usefull Automated Scripts
-After downloading or cloning this repository. You will need to add it to your system's PATH variable.
+After downloading or cloning this repository. You will no longer need to add the toolchain to your system's PATH since */usr/local/bin* is already added.
 
 ## Scripts
 
