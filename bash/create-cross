@@ -24,6 +24,8 @@ echo "Enter the target architecture (default: x86_64-elf):"
 read -r TARGET_ARCH
 if [ -z "$TARGET_ARCH" ]; then
     TARGET_ARCH="x86_64-elf"
+elif [ "$TARGET_ARCH" = "i686-elf" ]; then
+    TARGET_ARCH="i686-elf"
 fi
 echo "Target architecture: $TARGET_ARCH"
 TARGET=$TARGET_ARCH
@@ -72,7 +74,7 @@ make install-target-libgcc
 cd ..
 # DONT KNOW WHY sudo is required!
 sudo rm -rd binutils-$BINUTILS_VERSION gcc-$GCC_VERSION binutils-$BINUTILS_VERSION.tar.gz gcc-$GCC_VERSION.tar.gz build-binutils build-gcc
-echo 'export PATH="$PATH:$HOME/opt/cross/bin"' >> $HOME/.bashrc
+echo 'export PATH="$PATH:$PREFIX/bin"' >> $HOME/.bashrc
 source ~/.bashrc
 
 
