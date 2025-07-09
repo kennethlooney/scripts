@@ -51,10 +51,10 @@ if [ -z "$CROSS_COMPILER_LOCATION" ]; then
     CROSS_COMPILER_LOCATION="$HOME/opt/cross"
 fi
 echo "Cross compiler location: $CROSS_COMPILER_LOCATION"
-mkdir -p $CROSS_COMPILER_LOCATION
-cd $CROSS_COMPILER_LOCATION
+mkdir -p "$CROSS_COMPILER_LOCATION"
+cd "$CROSS_COMPILER_LOCATION" || exit 1
 echo "Creating cross compiler in $CROSS_COMPILER_LOCATION"
-PREFIX=$CROSS_COMPILER_LOCATION
+PREFIX="$CROSS_COMPILER_LOCATION"
 
 
 # Prompt the user for the target architecture.
@@ -70,9 +70,6 @@ echo "Target architecture: $TARGET_ARCH"
 TARGET=$TARGET_ARCH
 echo "Creating cross compiler for $TARGET"
 
-cd /etc
-
-
 ## Test if local host is Arch based.
 if [ -d /etc/pacman.d ]
 then
@@ -85,26 +82,29 @@ if [ -d /etc/apt ]
 then
     ## Run the Debian version of the install command.
     sudo apt-get install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo libisl-dev -y
-
 fi
-cd ~
-wget https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz
-wget https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz
+
+wget "https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz"
+wget "https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz"
 
 tar xfv binutils-$BINUTILS_VERSION.tar.gz
 tar xfv gcc-$GCC_VERSION.tar.gz
 
 mkdir -p build-binutils
+tar xfv "binutils-$BINUTILS_VERSION.tar.gz"
+tar xfv "gcc-$GCC_VERSION.tar.gz"
+
+mkdir -p build-binutils
 mkdir -p build-gcc
 
-cd build-binutils
-../binutils-$BINUTILS_VERSION/configure --target=$TARGET --prefix="$PREFIX" --enable-interwork --enable-multilib --disable-nls --disable-werror
+cd build-binutils || exit 1
+../binutils-$BINUTILS_VERSION/configure --target="$TARGET" --prefix="$PREFIX" --enable-interwork --enable-multilib --disable-nls --disable-werror
 make
 make install
 cd ..
 
-cd build-gcc
-../gcc-$GCC_VERSION/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --disable-libssp --enable-languages=c,c++ --without-headers 
+cd build-gcc || exit 1
+../gcc-$GCC_VERSION/configure --target="$TARGET" --prefix="$PREFIX" --disable-nls --disable-libssp --enable-languages=c,c++ --without-headers 
 make all-gcc
 make all-target-libgcc
 make install-gcc
@@ -112,9 +112,7 @@ make install-target-libgcc
 
 cd ..
 # DONT KNOW WHY sudo is required!
-sudo rm -rd binutils-$BINUTILS_VERSION gcc-$GCC_VERSION binutils-$BINUTILS_VERSION.tar.gz gcc-$GCC_VERSION.tar.gz build-binutils build-gcc
-echo "export PREFIX=\"$CROSS_COMPILER_LOCATION\"" >> $HOME/.bashrc
-echo "export PATH=\"\$PATH:$CROSS_COMPILER_LOCATION/bin\"" >> $HOME/.bashrc
-source ~/.bashrc
-
-
+sudo rm -rf "binutils-$BINUTILS_VERSION" "gcc-$GCC_VERSION" "binutils-$BINUTILS_VERSION.tar.gz" "gcc-$GCC_VERSION.tar.gz" build-binutils build-gcc
+echo "export PREFIX=\"$CROSS_COMPILER_LOCATION\"" >> "$HOME/.bashrc"
+echo "export PATH=\"\$PATH:$CROSS_COMPILER_LOCATION/bin\"" >> "$HOME/.bashrc"
+source "$HOME/.bashrc"
