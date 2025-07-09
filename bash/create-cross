@@ -1,5 +1,43 @@
 #!/bin/bash
 
+## Platform Detection
+detect_platform() {
+    case "$(uname -s)" in
+        MINGW*|MSYS*|CYGWIN*)
+            echo "windows"
+            ;;
+        Linux|Darwin|*BSD|SunOS)
+            echo "posix"
+            ;;
+        *)
+            echo "unknown"
+            ;;
+    esac
+}
+
+PLATFORM=$(detect_platform)
+echo "Detected platform: $PLATFORM"
+
+# Check if running on Windows
+if [ "$PLATFORM" = "windows" ]; then
+    echo "Warning: This script is designed for POSIX systems. Windows detected."
+    echo "Consider using WSL (Windows Subsystem for Linux) or a similar environment."
+    read -p "Continue anyway? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Exiting..."
+        exit 1
+    fi
+elif [ "$PLATFORM" = "unknown" ]; then
+    echo "Warning: Unknown platform detected. This script is designed for POSIX systems."
+    read -p "Continue anyway? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Exiting..."
+        exit 1
+    fi
+fi
+
 ## https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.gz
 ## https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.gz
 BINUTILS_VERSION=2.44
@@ -75,10 +113,8 @@ make install-target-libgcc
 cd ..
 # DONT KNOW WHY sudo is required!
 sudo rm -rd binutils-$BINUTILS_VERSION gcc-$GCC_VERSION binutils-$BINUTILS_VERSION.tar.gz gcc-$GCC_VERSION.tar.gz build-binutils build-gcc
-# ...existing code...
 echo "export PREFIX=\"$CROSS_COMPILER_LOCATION\"" >> $HOME/.bashrc
 echo "export PATH=\"\$PATH:$CROSS_COMPILER_LOCATION/bin\"" >> $HOME/.bashrc
-# ...existing code...
 source ~/.bashrc
 
 
