@@ -116,12 +116,3 @@ sudo rm -rf "binutils-$BINUTILS_VERSION" "gcc-$GCC_VERSION" "binutils-$BINUTILS_
 echo "export PREFIX=\"$CROSS_COMPILER_LOCATION\"" >> "$HOME/.bashrc"
 echo "export PATH=\"\$PATH:$CROSS_COMPILER_LOCATION/bin\"" >> "$HOME/.bashrc"
 source "$HOME/.bashrc"
-echo "Cross compiler created successfully at $CROSS_COMPILER_LOCATION"
-echo "You can now use the cross compiler with the target architecture: $TARGET_ARCH"
-echo "To use the cross compiler, add the following lines to your .bashrc or .bash_profile:"
-echo "export PREFIX=\"$CROSS_COMPILER_LOCATION\""
-echo "export PATH=\"\$PATH:$CROSS_COMPILER_LOCATION/bin\""
-echo "Then run 'source ~/.bashrc' or 'source ~/.bash_profile' to apply the changes."
-echo "You can now use the cross compiler with the target architecture: $TARGET_ARCH"
-echo "To verify the installation, run: $TARGET-gcc --version"
-echo "To compile a simple C program, use: $TARGET-gcc -o hello hello
