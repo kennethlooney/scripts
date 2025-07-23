@@ -115,4 +115,4 @@ cd ..
 sudo rm -rf "binutils-$BINUTILS_VERSION" "gcc-$GCC_VERSION" "binutils-$BINUTILS_VERSION.tar.gz" "gcc-$GCC_VERSION.tar.gz" build-binutils build-gcc
 echo "export PREFIX=\"$CROSS_COMPILER_LOCATION\"" >> "$HOME/.bashrc"
 echo "export PATH=\"\$PATH:$CROSS_COMPILER_LOCATION/bin\"" >> "$HOME/.bashrc"
-source "$HOME/.bashrc"
+sudo bash -c "source \"$HOME/.bashrc\""
