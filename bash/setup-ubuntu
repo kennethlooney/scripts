@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+# Update package lists and upgrade existing packages
+sudo apt-get update && sudo apt-get -y upgrade
+
+# Install essential packages
+ESSENTIAL_PACKAGES=(
+    build-essential
+    curl
+    git
+    wget
+    vim
+    unzip
+    software-properties-common
+    mtools
+    dosfstools
+    nasm
+)
+sudo apt-get install -y "${ESSENTIAL_PACKAGES[@]}"
+# Clean up
+sudo apt-get clean
+echo "Ubuntu setup completed successfully."
+
