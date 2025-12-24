@@ -13,7 +13,6 @@ ESSENTIAL_PACKAGES=(
     wget
     vim
     unzip
-    software-properties-common
     mtools
     dosfstools
     nasm
