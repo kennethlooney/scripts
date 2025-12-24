@@ -58,12 +58,21 @@ PREFIX="$CROSS_COMPILER_LOCATION"
 
 
 # Prompt the user for the target architecture.
+echo "The script supports the following target architectures:"
+echo "1) x86_64-elf (default)"
+echo "2) i686-elf"
+echo "3) aarch64-none-elf"
 echo "Enter the target architecture (default: x86_64-elf):"
 read -r TARGET_ARCH
 if [ -z "$TARGET_ARCH" ]; then
     TARGET_ARCH="x86_64-elf"
 elif [ "$TARGET_ARCH" = "i686-elf" ]; then
     TARGET_ARCH="i686-elf"
+elif [ "$TARGET_ARCH" = "aarch64-none-elf" ]; then
+    TARGET_ARCH="aarch64-none-elf"
+else
+    echo "Unknown architecture specified. Using default: x86_64-elf"
+    TARGET_ARCH="x86_64-elf"
 
 fi
 echo "Target architecture: $TARGET_ARCH"
