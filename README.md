@@ -4,7 +4,7 @@
 ### For Operating System Development
 | Script | Lnguage | Description |
 |--------|---------|-------------|
-| *setup-debian* | *Bash* | Setup a Debian/Ubuntu distrobution for operating system development with ARM development. If you want to add another cross compiler use the *create-cross* script. |
+| *setup-debian* | *Bash* | Setup a Debian/Ubuntu distrobution for operating system development. If you want to add another cross compiler use the *create-cross* script. |
 | *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles currently for *i686, x86_64, arm, aarch64* You will be prompt with some options:
 - *The location where you want the cross compiler to be installed*
 - *The toolchain. The default is x86_64-elf*

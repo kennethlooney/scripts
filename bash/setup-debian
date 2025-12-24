@@ -2,17 +2,12 @@
 
 set -e
 
-echo "INFO: This script sets up a fresh Debian environment with essential packages for development and cross-compilation."
-echo "INFO: It adds the arm64 architecture and installs necessary tools."
-echo "INFO: Ensure you have sudo privileges to run this script."
-echo "INFO: This script assumes you already have GIT installed."
+echo "This script sets up a Debian environment with essential development tools for operating system development for both BIOS and UEFI."
 
 # Update package lists and upgrade existing packages
 sudo apt-get update && sudo apt-get -y upgrade
 
-if ! dpkg --print-foreign-architectures | grep -q arm64; then
-    sudo dpkg --add-architecture arm64
-fi
+ 
 
 # Install essential packages
 ESSENTIAL_PACKAGES=(
@@ -24,16 +19,15 @@ ESSENTIAL_PACKAGES=(
     mtools
     dosfstools
     nasm
-    gcc-aarch64-linux-gnu 
-    g++-aarch64-linux-gnu
     cmake 
-    qemu-system-arm 
-    qemu-system-aarch64
     qemu-system-x86
+    mingw-w64
+    ovmf
 )
 sudo apt-get install -y "${ESSENTIAL_PACKAGES[@]}"
 # Clean up
 sudo apt-get clean
 echo "Debian setup completed successfully."
-echo "You now should add a cross compiler for aarch64 invoking the create-cross script."
+echo "Now run the create-cross script to set up the cross compiler."
+
 
