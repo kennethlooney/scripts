@@ -30,6 +30,8 @@ ESSENTIAL_PACKAGES=(
     qemu-system-arm 
     qemu-system-aarch64
     qemu-system-x86
+    gcc-aarch64-none-elf 
+    binutils-aarch64-none-elf
 )
 sudo apt-get install -y "${ESSENTIAL_PACKAGES[@]}"
 # Clean up
