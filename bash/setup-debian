@@ -5,6 +5,10 @@ set -e
 # Update package lists and upgrade existing packages
 sudo apt-get update && sudo apt-get -y upgrade
 
+if ! dpkg --print-foreign-architectures | grep -q arm64; then
+    sudo dpkg --add-architecture arm64
+fi
+
 # Install essential packages
 ESSENTIAL_PACKAGES=(
     build-essential
@@ -16,9 +20,16 @@ ESSENTIAL_PACKAGES=(
     mtools
     dosfstools
     nasm
+    gcc-aarch64-linux-gnu 
+    g++-aarch64-linux-gnu
+    cmake 
+    qemu-system-arm 
+    qemu-system-aarch64
+    qemu-system-x86
+    libc6:arm64
 )
 sudo apt-get install -y "${ESSENTIAL_PACKAGES[@]}"
 # Clean up
 sudo apt-get clean
-echo "Ubuntu setup completed successfully."
+echo "Debian setup completed successfully."
 
