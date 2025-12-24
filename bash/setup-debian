@@ -2,7 +2,7 @@
 
 set -e
 
-echo "INFO: This script sets up a Debian environment with essential packages for development and cross-compilation."
+echo "INFO: This script sets up a fresh Debian environment with essential packages for development and cross-compilation."
 echo "INFO: It adds the arm64 architecture and installs necessary tools."
 echo "INFO: Ensure you have sudo privileges to run this script."
 echo "INFO: This script assumes you already have GIT installed."
