@@ -2,6 +2,11 @@
 
 set -e
 
+echo "INFO: This script sets up a Debian environment with essential packages for development and cross-compilation."
+echo "INFO: It adds the arm64 architecture and installs necessary tools."
+echo "INFO: Ensure you have sudo privileges to run this script."
+echo "INFO: This script assumes you already have GIT installed."
+
 # Update package lists and upgrade existing packages
 sudo apt-get update && sudo apt-get -y upgrade
 
@@ -13,7 +18,6 @@ fi
 ESSENTIAL_PACKAGES=(
     build-essential
     curl
-    git
     wget
     vim
     unzip
