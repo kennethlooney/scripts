@@ -8,6 +8,7 @@
 | *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles currently for *i686 or x86_64* You will be prompt with some options:
 - *The location where you want the cross compiler to be installed*
 - *The toolchain. The default is x86_64-elf*
+- *It also installs the the specific gdb version such as x86_64-elf-gdb*
 
 ### For Package Management
 | Script | Lnguage | Description |
