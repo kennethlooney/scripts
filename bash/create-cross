@@ -127,7 +127,7 @@ make install
 cd ..
     
 # DONT KNOW WHY sudo is required!
-sudo rm -rf "binutils-$BINUTILS_VERSION" "gcc-$GCC_VERSION" "gdb-$GDB_VERSION" "binutils-$BINUTILS_VERSION.tar.gz" "gcc-$GCC_VERSION.tar.gz" "gdb-$GDB_VERSION.tar.xz" build-binutils build-gcc build-gdb
+sudo rm -rf "binutils-$BINUTILS_VERSION" "gcc-$GCC_VERSION" "gdb-$GDB_VERSION" "gdb-$GDB_VERSION.tar.gz"  "binutils-$BINUTILS_VERSION.tar.gz" "gcc-$GCC_VERSION.tar.gz" "gdb-$GDB_VERSION.tar.xz" build-binutils build-gcc build-gdb
 echo "export PREFIX=\"$CROSS_COMPILER_LOCATION\"" >> "$HOME/.bashrc"
 echo "export PATH=\"\$PATH:$CROSS_COMPILER_LOCATION/bin\"" >> "$HOME/.bashrc"
 echo "Everything is done! Please restart your terminal or run 'source ~/.bashrc' to update your PATH."
