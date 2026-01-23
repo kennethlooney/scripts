@@ -120,6 +120,7 @@ make install-target-libgcc
 
 cd ..
 
+mkdir -p build-gdb
 cd build-gdb || exit 1
 ../gdb-$GDB_VERSION/configure --target="$TARGET" --prefix="$PREFIX" --disable-nls --disable-werror
 make
