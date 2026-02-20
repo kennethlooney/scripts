@@ -2,13 +2,11 @@
 
 
 ### For Operating System Development
-| Script | Lnguage | Description |
-|--------|---------|-------------|
+| Script | Language | Description |
+|--------|----------|-------------|
 | *setup-debian* | *Bash* | Setup a Debian/Ubuntu distrobution for operating system development. If you want to add another cross compiler use the *create-cross* script. |
-| *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles currently for *i686 or x86_64* You will be prompt with some options:
-- *The location where you want the cross compiler to be installed*
-- *The toolchain. The default is x86_64-elf*
-- *It also installs the the specific gdb version such as x86_64-elf-gdb*
+| *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles currently for *i686 or x86_64*. You will be prompted with options: location for installation, toolchain (default x86_64-elf), and specific gdb version (x86_64-elf-gdb). |
+| *hardware directory* | *Bash and Powershell* | *A few scripts that help in probing hardware profiles and staging to a USB drive.* |
 
 ### For Package Management
 | Script | Lnguage | Description |
