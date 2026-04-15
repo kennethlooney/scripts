@@ -40,7 +40,7 @@ fi
 
 ## https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.gz
 ## https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.gz
-BINUTILS_VERSION=2.45
+BINUTILS_VERSION=2.46
 GCC_VERSION=15.2.0
 GDB_VERSION=15.2
 

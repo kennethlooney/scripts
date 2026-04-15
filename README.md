@@ -4,7 +4,6 @@
 ### For Operating System Development
 | Script | Language | Description |
 |--------|----------|-------------|
-| *create_disk_image.sh* | *Bash* | This bash script helps create a GPT FAT32 disk image.
 | *setup-debian* | *Bash* | Setup a Debian/Ubuntu distrobution for operating system development. If you want to add another cross compiler use the *create-cross* script. |
 | *create-cross* | *Bash* | Setup a *build environment* for *Arch* or *Debian* hosts and compiles currently for *i686 or x86_64*. You will be prompted with options: location for installation, toolchain (default x86_64-elf), and specific gdb version (x86_64-elf-gdb). |
 | *hardware directory* | *Bash and Powershell* | *A few scripts that help in probing hardware profiles and staging to a USB drive.* |
